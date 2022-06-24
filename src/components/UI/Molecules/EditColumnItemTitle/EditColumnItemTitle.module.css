@@ -1,0 +1,21 @@
+.editColumnItem__title {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    max-width: 100%;
+}
+
+.editColumnItem__title input {
+    width: 100%;
+}
+
+.editColumnItemTitle__focused {
+    box-shadow: 0 0 0 2px #0079bf;
+    background: white;
+}

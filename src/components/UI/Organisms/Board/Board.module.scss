@@ -1,0 +1,10 @@
+.board {
+    padding-top: 120px;
+    height: 100vh;
+}
+
+.board__columns {
+    display: flex;
+    align-items: flex-start;
+    padding: 0 1rem 2rem 1rem;
+}
