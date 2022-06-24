@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react';
 import styles from './Header.module.scss';
-// import ColorSchemeSelect from '../ColorSchemeSelect/ColorSchemeSelect';
-// import CreateNewBoard from '../CreateNewBoard/CreateNewBoard';
+import ColorSchemeSelect from '@Molecules/ColorSchemeSelect/ColorSchemeSelect';
+import CreateNewBoard from '@Molecules/CreateNewBoard/CreateNewBoard';
 import SelectBoard from '../SelectBoard/SelectBoard';
 import { ModalUIProvider } from '@hooks/useModal';
 
@@ -12,14 +12,14 @@ const Header: FunctionComponent = () => {
                 <ModalUIProvider>
                     <SelectBoard />
                 </ModalUIProvider>
-{/* 
+
                 <ModalUIProvider>
                     <CreateNewBoard />
                 </ModalUIProvider>
 
                 <ModalUIProvider>
                     <ColorSchemeSelect />
-                </ModalUIProvider> */}
+                </ModalUIProvider>
             </div>
         </div>
     );

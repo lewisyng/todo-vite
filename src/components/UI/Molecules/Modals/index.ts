@@ -5,3 +5,5 @@ export { CreateTagModal } from './CreateTagModal/CreateTagModal';
 export { EditColumnItemModal } from './EditColumnItemModal/EditColumnItemModal';
 export { DeleteColumnModal } from './DeleteColumnModal/DeleteColumnModal';
 export { ChecklistModal } from './ChecklistModal/ChecklistModal';
+export { CreateNewBoardModal } from './CreateNewBoardModal/CreateNewBoardModal';
+export { ColorSchemesModal } from './ColorSchemesModal/ColorSchemesModal';
