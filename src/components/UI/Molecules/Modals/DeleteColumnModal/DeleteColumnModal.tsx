@@ -1,4 +1,6 @@
-import { BasicModal } from '@Molecules/Modals';
+import styles from './DeleteColumnModal.module.scss';
+import Button from '@src/components/UI/Atoms/Button/Button';
+import BaseModal from '../BaseModal';
 
 export const DeleteColumnModal = ({
     open,
@@ -10,16 +12,21 @@ export const DeleteColumnModal = ({
     deleteColumn: () => void;
 }) => {
     return (
-        <BasicModal
+        <BaseModal
             open={open}
             onClose={handleClose}
-            header="Delete Column"
-            subheader="Are you sure you want to delete this column? This action cannot be undone."
-            mainActionTitle="Column löschen"
-            secondaryActionTitle="Abbrechen"
-            mainAction={deleteColumn}
-            secondaryAction={handleClose}
-        />
+            title="Delete Column"
+            subtitle="Are you sure you want to delete this column? This action cannot be undone."
+        >
+            <div className={styles['delete-column-modal__actions']}>
+                <Button variant="secondary" onClick={deleteColumn}>
+                    Column löschen
+                </Button>
+                <Button variant="warning" onClick={handleClose}>
+                    Abbrechen
+                </Button>
+            </div>
+        </BaseModal>
     );
 };
 

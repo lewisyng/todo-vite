@@ -1,0 +1,21 @@
+.deleteColumnModal__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+    width: 400px;
+    border-radius: 10px;
+    padding: 1rem 0;
+    line-height: 1.5;
+}
+
+.delete-column-modal__actions {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.delete-column-modal__actions>* {
+    color: black;
+}

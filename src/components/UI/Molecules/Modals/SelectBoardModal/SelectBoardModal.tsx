@@ -5,9 +5,10 @@ import { Board } from '@src/models';
 import { useAppDispatch, useAppSelector } from '@src/lib/hooks/redux';
 import { setCurrentBoardId } from '@src/redux/slices/Board/board.actions';
 import { useLiveQuery } from 'dexie-react-hooks';
-import { BasicModal } from '@Molecules/Modals';
 import { Typography } from '@src/components/UI/Atoms/Typography/Typography';
 import { setCurrentBoardTitle } from '@src/redux/slices/Board/board.actions';
+import BaseModal from '../BaseModal';
+import Button from '@src/components/UI/Atoms/Button/Button';
 
 export const SelectBoardModal = ({
     open,
@@ -39,44 +40,39 @@ export const SelectBoardModal = ({
     const boardIsCurrent = (currentBoard: number, boardId: number) =>
         currentBoard === boardId;
 
-    const SelectBoardBody = (
-        <div className={styles.boardTiles}>
-            {boards &&
-                boards.map((board: Board, idx: number) => (
-                    <div
-                        key={idx}
-                        className={cs(
-                            styles.boardTile,
-                            boardIsCurrent(currentBoardId!, board.id!) &&
-                                styles.boardTile__selected
-                        )}
-                        onClick={() => handleClick(board.id as number)}
-                    >
-                        <Typography
-                            size="text-sm"
-                            weight={
-                                boardIsCurrent(currentBoardId!, board.id!)
-                                    ? 'bold'
-                                    : 'normal'
-                            }
-                            uppercase
-                        >
-                            {board.title}
-                        </Typography>
-                    </div>
-                ))}
-        </div>
-    );
-
     return (
-        <BasicModal
-            open={open}
-            onClose={handleClose}
-            header="Select a board"
-            secondaryActionTitle="Exit"
-            body={SelectBoardBody}
-            secondaryAction={handleClose}
-        />
+        <BaseModal open={open} onClose={handleClose} title="Select a board">
+            <div className={styles.boardTiles}>
+                {boards &&
+                    boards.map((board: Board, idx: number) => (
+                        <div
+                            key={idx}
+                            className={cs(
+                                styles.boardTile,
+                                boardIsCurrent(currentBoardId!, board.id!) &&
+                                    styles.boardTile__selected
+                            )}
+                            onClick={() => handleClick(board.id as number)}
+                        >
+                            <Typography
+                                size="text-sm"
+                                weight={
+                                    boardIsCurrent(currentBoardId!, board.id!)
+                                        ? 'bold'
+                                        : 'normal'
+                                }
+                                uppercase
+                            >
+                                {board.title}
+                            </Typography>
+                        </div>
+                    ))}
+            </div>
+
+            <Button variant="warning" onClick={handleClose}>
+                Abbrechen
+            </Button>
+        </BaseModal>
     );
 };
 
