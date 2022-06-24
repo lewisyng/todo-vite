@@ -5,6 +5,7 @@ import { database } from '@src/database';
 import TagTile from '@Atoms/TagTile/TagTile';
 import { BasicModal, CreateTagModal, EditTagModal } from '@Molecules/Modals';
 import { useModal } from '@hooks/useModal';
+import BaseModal from '../BaseModal';
 
 export const ManageTagsModal = () => {
     const { isModalOpen, closeModal } = useModal();
@@ -27,10 +28,10 @@ export const ManageTagsModal = () => {
 
     return (
         <>
-            <BasicModal
+            <BaseModal
                 open={isModalOpen}
                 onClose={closeModal}
-                header="Manage your tags"
+                title="Manage your tags"
             >
                 <div className={styles.manageTagsModal__content}>
                     <div className={styles.manageTagsModal__tagTiles}>
@@ -51,7 +52,7 @@ export const ManageTagsModal = () => {
                         })}
                     </div>
                 </div>
-            </BasicModal>
+            </BaseModal>
 
             <CreateTagModal
                 open={createTagModalOpen}
