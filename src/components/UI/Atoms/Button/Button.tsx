@@ -8,11 +8,13 @@ const Button = ({
     type = 'button',
     form = 'nude',
     onClick,
+    className,
 }: ButtonProps) => {
     return (
         <button
             type={type}
             className={cn(
+                className,
                 styles.button,
                 form && styles[`button--${form}`],
                 styles[`button--${type}`],
