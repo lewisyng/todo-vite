@@ -27,13 +27,18 @@ export const EditColumnItemModal = ({
             className={styles.editColumnItemModal}
             open={open}
             onClose={onClose}
+            parentSelector={document.body}
+            title="Edit Column Item"
         >
             <div className={styles.editColumnItemModal__content}>
-                <EditColumnItemModalMain
-                    columnItem={liveColumnItem || columnItem}
-                />
-
-                <EditColumnItemModalSide columnItemId={columnItem.id!} />
+                <div className={styles["editColumnItemModal__content-main"]}>
+                    <EditColumnItemModalMain
+                        columnItem={liveColumnItem || columnItem}
+                    />
+                </div>
+                <div className={styles["editColumnItemModal__content-side"]}>
+                    <EditColumnItemModalSide columnItemId={columnItem.id!} />
+                </div>
             </div>
         </BaseModal>
     );

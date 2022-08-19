@@ -8,6 +8,7 @@ export const BaseModal = ({
     title,
     subtitle,
     className,
+    parentSelector,
     open,
     onClose,
 }: {
@@ -17,6 +18,7 @@ export const BaseModal = ({
     title?: string;
     subtitle?: string;
     className?: string;
+    parentSelector?: HTMLElement;
     open: boolean;
     onClose: () => void;
 }) => {
@@ -25,6 +27,8 @@ export const BaseModal = ({
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
+            background: 'rgba(0,0,0,0.4)',
+            backdropFilter: 'blur(1px)',
         },
     };
 
@@ -36,20 +40,26 @@ export const BaseModal = ({
             className={cn(className, styles['base-modal'])}
         >
             <div className={styles['base-modal__content']}>
-                <Typography
-                    size="text-lg"
-                    weight="medium"
-                    className={styles['base-modal__title']}
-                >
-                    {title}
-                </Typography>
-                <Typography
-                    size="text-sm"
-                    weight="normal"
-                    className={styles['base-modal__subtitle']}
-                >
-                    {subtitle}
-                </Typography>
+                <div className={styles['base-modal__content-header']}>
+                    {title && (
+                        <Typography
+                            size="text-lg"
+                            weight="medium"
+                            className={styles['base-modal__title']}
+                        >
+                            {title}
+                        </Typography>
+                    )}
+                    {subtitle && (
+                        <Typography
+                            size="text-sm"
+                            weight="normal"
+                            className={styles['base-modal__subtitle']}
+                        >
+                            {subtitle}
+                        </Typography>
+                    )}
+                </div>
 
                 {children}
             </div>

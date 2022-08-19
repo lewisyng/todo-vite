@@ -22,7 +22,11 @@ export const EditColumnItemChecklists = ({
 
     return (
         <>
-            <Label title="Checklists" />
+            <Label
+                className={styles.editColumnItemChecklist__label}
+                title="Checklists"
+                bold
+            />
 
             <div className={styles.columnItemChecklists}>
                 {checklists.map((checklist, idx) => (

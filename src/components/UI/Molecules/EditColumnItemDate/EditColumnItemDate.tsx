@@ -4,6 +4,7 @@ import { Label } from '@Atoms/Label/Label';
 import { useCallback } from 'react';
 import { database } from '@src/database';
 import ReactDatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css'
 
 export const EditColumnItemDate = ({ columnItem }: { columnItem: Item }) => {
     const { startDate, endDate } = columnItem;

@@ -22,6 +22,15 @@
     background-color: rgba(255, 255, 255, 0.5);
 } */
 
+.button--primary {
+    background-color: #00bcd4;
+    color: var(--grey-900);
+}
+
+.button--primary:hover {
+    color: white;
+}
+
 .button--secondary {
     background-color: transparent;
     border: 1px solid #D0D5DD;
@@ -40,7 +49,7 @@
     background-color: var(--red-400);
 }
 
-.button[data-variant='tertiary'] {
+.button--tertiary {
     background-color: transparent;
     color: black;
     text-decoration: underline;
@@ -48,6 +57,7 @@
 
 .button--nude {
     background: transparent;
+    color: black;
 
     &:hover {
         background-color: rgba(white, 0.1);

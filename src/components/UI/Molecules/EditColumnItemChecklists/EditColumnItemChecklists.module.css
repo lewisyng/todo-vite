@@ -1,3 +1,7 @@
 .columnItemChecklists > *:not(:last-of-type) {
     margin-bottom: 1rem;
 }
+
+.editColumnItemChecklist__label {
+    margin-bottom: 0.5rem;
+}

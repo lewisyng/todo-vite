@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import styles from './ChecklistModal.module.css';
 import { database } from '@src/database';
 import BaseModal from '@Molecules/Modals/BaseModal';
 import Input from '@Atoms/Input/Input';
+import Button from '@src/components/UI/Atoms/Button/Button';
 
 export const ChecklistModal = ({
     columnItemId,
@@ -33,17 +35,21 @@ export const ChecklistModal = ({
 
     return (
         <BaseModal
-            title="Name your new checklist"
+            title="Create a new checklist"
             open={open}
             onClose={handleClose}
         >
-            <form onSubmit={createChecklist}>
+            <form onSubmit={createChecklist} className={styles.checklistModal__form}>
                 <Input
                     type="text"
                     label="Title"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                 />
+
+                <Button type="submit" variant="secondary">
+                    Create
+                </Button>
             </form>
         </BaseModal>
     );

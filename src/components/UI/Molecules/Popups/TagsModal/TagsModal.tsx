@@ -4,7 +4,7 @@ import { database } from '@src/database';
 import { TagType } from '@src/models';
 import BaseModal from '@Molecules/Modals/BaseModal';
 import Button from '@src/components/UI/Atoms/Button/Button';
-import Checkbox from '@src/components/UI/Atoms/Checkbox/Checkbox';
+import cs from 'classnames';
 
 export const TagsModal = ({
     columnItemId,
@@ -22,6 +22,8 @@ export const TagsModal = ({
     const columnItem = useLiveQuery(() =>
         database.items.where('id').equals(columnItemId).first()
     );
+
+    console.log('col', columnItem?.tags);
 
     const toggleTag = (tagId: number) => {
         if (columnItem!.tags?.includes(tagId)) {
@@ -52,12 +54,16 @@ export const TagsModal = ({
 
     return (
         <BaseModal title="Tags" open={open} onClose={handleClose}>
-            <div>
+            <div className={styles.tags}>
                 {tags?.map((tag) => {
                     return (
                         <div
                             key={tag.id}
-                            className={styles.tag}
+                            className={cs(
+                                styles.tag,
+                                columnItem?.tags.includes(tag!.id as number) &&
+                                    styles['tag--active']
+                            )}
                             onClick={() => toggleTag(tag.id!)}
                         >
                             <div
@@ -66,24 +72,16 @@ export const TagsModal = ({
                             ></div>
 
                             <div className={styles.tag__title}>{tag.title}</div>
-
-                            {columnItem && (
-                                <Checkbox
-                                    onChange={() => toggleTag(tag.id!)}
-                                    checked={columnItem!.tags.includes(
-                                        tag.id as number
-                                    )}
-                                />
-                            )}
                         </div>
                     );
                 })}
 
-                <div>
-                    <Button /*variant="outlined"*/ onClick={deselectAll}>
-                        Deselect all
-                    </Button>
-                </div>
+                <Button className={styles.tagsModal__btn} onClick={deselectAll} variant="primary">
+                    Save
+                </Button>
+                <Button className={styles.tagsModal__btn} onClick={deselectAll} variant="secondary">
+                    Deselect all
+                </Button>
             </div>
         </BaseModal>
     );

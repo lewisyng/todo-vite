@@ -51,7 +51,7 @@ export const EditColumnItemModalMain = ({
             )} */}
 
             {/* DATE */}
-            <EditColumnItemSection title="Date" icon={<DateRange />}>
+            <EditColumnItemSection icon={<DateRange />}>
                 <EditColumnItemDate columnItem={columnItem} />
             </EditColumnItemSection>
 

@@ -4,6 +4,7 @@ import { ButtonProps } from './Button.types';
 
 const Button = ({
     children,
+    className,
     variant = 'default',
     type = 'button',
     form = 'nude',
@@ -13,6 +14,7 @@ const Button = ({
         <button
             type={type}
             className={cn(
+                className,
                 styles.button,
                 form && styles[`button--${form}`],
                 styles[`button--${type}`],

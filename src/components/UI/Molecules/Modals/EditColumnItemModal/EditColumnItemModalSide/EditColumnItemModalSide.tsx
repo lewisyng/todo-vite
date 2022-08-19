@@ -25,7 +25,7 @@ export const EditColumnItemModalSide = ({
                     // color="primary"
                     onClick={() => setTagsModalOpen(true)}
                 >
-                    <LocalOfferIcon />
+                    <LocalOfferIcon /> Tags
                 </Button>
 
                 {tagsModalOpen && (
@@ -60,7 +60,7 @@ export const EditColumnItemModalSide = ({
                     // color="primary"
                     onClick={() => setChecklistModalOpen(true)}
                 >
-                    <CheckBoxIcon />
+                    <CheckBoxIcon /> Checklist
                 </Button>
 
                 <ChecklistModal

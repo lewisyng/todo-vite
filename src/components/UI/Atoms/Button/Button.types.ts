@@ -1,5 +1,6 @@
 type ButtonVariants =
     | 'default'
+    | 'primary'
     | 'secondary'
     | 'tertiary'
     | 'disabled'

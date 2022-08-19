@@ -1,11 +1,16 @@
 .editColumnItem__dates {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    gap: 1rem;
 }
 
 .editColumnItem__date {
     margin-bottom: 1.25rem;
+}
+
+.editColumnItem__date input {
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 0.25rem 0.5rem;
 }
 
 .editColumnItemDate__button {

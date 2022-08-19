@@ -1,8 +1,7 @@
 .tags
     display: grid
-    grid-template-columns: repeat(2, 1fr)
-    margin: 2rem 0
-    grid-gap: 1rem
+    margin: 2rem 0 0 0
+    grid-gap: 0.25rem
 
 .tag
     display: flex
@@ -16,7 +15,7 @@
     fill: black !important
 
 .tag__color
-    width: 0.5rem 
+    width: 0.5rem
     background: red
     margin: 2px 0
 
@@ -24,3 +23,10 @@
     width: 250px
     margin: auto 0
     padding-left: 1rem
+    padding: 1rem
+
+.tag--active
+    background: rgba(0,0,0,0.1)
+
+.tagsModal__btn
+    margin-top: 2rem

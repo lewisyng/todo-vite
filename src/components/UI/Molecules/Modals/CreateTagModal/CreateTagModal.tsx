@@ -1,10 +1,11 @@
 import styles from './CreateTagModal.module.css';
 import cn from 'classnames';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useRef, useState } from 'react';
 import { Label } from '@Atoms/Label/Label';
 import { database } from '@src/database';
 import BaseModal from '@Molecules/Modals/BaseModal';
 import Button from '@Atoms/Button/Button';
+import Input from '@src/components/UI/Atoms/Input/Input';
 
 export const CreateTagModal = ({
     open,
@@ -15,6 +16,7 @@ export const CreateTagModal = ({
 }) => {
     const [title, setTitle] = useState('');
     const [color, setColor] = useState('#000');
+    const titleInputRef = useRef<HTMLInputElement | null>(null);
 
     const addTag = (e: FormEvent) => {
         e.preventDefault();
@@ -30,34 +32,25 @@ export const CreateTagModal = ({
 
     return (
         <BaseModal open={open} onClose={handleClose} title="Create a tag">
-            <form onSubmit={addTag}>
-                <Label
-                    className={cn(styles.manageTagsModal__formField)}
-                    htmlFor="title"
-                    title="Title"
-                >
-                    <input
-                        type="text"
-                        id="title"
-                        name="title"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                    />
-                </Label>
+            <form className={styles.createTagModal__form} onSubmit={addTag}>
+                <Input
+                    ref={titleInputRef}
+                    label="Title"
+                    type="text"
+                    id="title"
+                    name="title"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                />
 
-                <Label
-                    className={cn(styles.manageTagsModal__formField)}
-                    htmlFor="color"
-                    title="Select a color"
-                >
-                    <input
-                        type="color"
-                        name="color"
-                        id="color"
-                        value={color}
-                        onChange={(e) => setColor(e.target.value)}
-                    />
-                </Label>
+                <Input
+                    label="Color"
+                    type="color"
+                    id="color"
+                    name="color"
+                    value={color}
+                    onChange={(e) => setColor(e.target.value)}
+                />
 
                 <Button type="submit" /*variant="outlined"*/>Create Tag</Button>
             </form>
