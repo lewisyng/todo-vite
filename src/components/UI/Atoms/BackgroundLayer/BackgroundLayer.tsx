@@ -1,6 +1,6 @@
 import styles from './BackgroundLayer.module.css';
-import { useAppSelector } from '../../hooks/redux';
-import { RootState } from '../../store/store';
+import { useAppSelector } from '@hooks/redux';
+import { RootState } from '@src/redux/store';
 
 export const BackgroundLayer = () => {
     const colorScheme = useAppSelector(

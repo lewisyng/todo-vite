@@ -64,7 +64,7 @@ export const CreateNewBoardModal = ({
                 </form>
 
                 {toasts.map((toast, idx) => {
-                    const offset = calculateOffset(idx);
+                    // const offset = calculateOffset(idx);
 
                     return (
                         <div
@@ -77,7 +77,7 @@ export const CreateNewBoardModal = ({
                             }}
                         >
                             <div className={styles['toast-content']}>
-                                {toast.message}
+                                {/* {toast.message} */}
                             </div>
                         </div>
                     );
