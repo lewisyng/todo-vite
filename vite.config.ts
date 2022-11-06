@@ -17,8 +17,11 @@ export default defineConfig({
                 './src/components/UI/Organisms'
             ),
             '@hooks': path.resolve(__dirname, './src/lib/hooks'),
-            '@helpers': path.resolve(__dirname, './src/lib/helpers')
+            '@helpers': path.resolve(__dirname, './src/lib/helpers'),
         },
     },
     plugins: [react()],
+    server: {
+        port: 3000,
+    },
 });
