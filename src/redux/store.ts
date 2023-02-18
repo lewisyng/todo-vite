@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { configReducer, ConfigType } from './slices/Config/config.reducer';
-import { boardReducer } from './slices/Board/board.reducer';
+import boardReducer from './slices/boardSlice';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
 import { configureStore } from '@reduxjs/toolkit';

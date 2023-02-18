@@ -5,10 +5,12 @@ import Board from '@Organisms/Board/Board';
 import { database } from '@src/database';
 import NoBoardScreen from '@Molecules/NoBoardScreen/NoBoardScreen';
 import { useAppDispatch, useAppSelector } from '@hooks/redux';
-import { setCurrentBoardId } from '@src/redux/slices/Board/board.actions';
 import { useLiveQuery } from 'dexie-react-hooks';
 import BackgroundLayer from '@Molecules/BackgroundLayer/BackgroundLayer';
-import { setCurrentBoardTitle } from '@src/redux/slices/Board/board.actions';
+import {
+    setCurrentBoardId,
+    setCurrentBoardTitle,
+} from '@src/redux/slices/boardSlice';
 
 const App: FunctionComponent = () => {
     const boards = useLiveQuery(() => database.boards.toArray());
