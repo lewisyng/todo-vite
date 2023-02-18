@@ -1,6 +1,6 @@
 import styles from './Columns.module.css';
 import Column from '@Molecules/Column/Column';
-import {EditColumnItemModal} from '@Molecules/Modals';
+import { EditColumnItemModal } from '@Molecules/Modals';
 import { useState } from 'react';
 import { useAppSelector } from '@hooks/redux';
 import { useLiveQuery } from 'dexie-react-hooks';
@@ -8,36 +8,39 @@ import { database } from '@src/database';
 
 export const Columns = () => {
     const [selectedColumnItem, setSelectedColumnItem] = useState<any>(null);
-    const [editColumnItemModalVisible, setEditColumnItemModalVisible] =
-        useState<boolean>(false);
+    const [editColumnItemModalVisible, setEditColumnItemModalVisible] = useState<boolean>(false);
 
-    const currentBoardId = useAppSelector(
-        (state) => state.board.currentBoardId
-    );
+    const currentBoardId = useAppSelector((state) => state.board.currentBoardId);
 
     const columns = useLiveQuery(
-        () =>
-            database.columns
+        () => {
+            if (!currentBoardId) return [];
+
+            return database.columns
                 .where('boardId')
                 .equals(currentBoardId as number)
-                .toArray(),
+                .toArray();
+        },
         [currentBoardId!],
-        []
+        [],
     );
 
-    return columns.length > 0 ? (
+    return columns && columns.length > 0 ? (
         <div className={styles.columns}>
-            {columns.map((column: any, idx: number) => (
-                <Column
-                    key={idx}
-                    handleColumnItemSelect={(item) => {
-                        setSelectedColumnItem(item);
-                        setEditColumnItemModalVisible(true);
-                    }}
-                    boardId={currentBoardId as number}
-                    column={column}
-                />
-            ))}
+            {columns.map((column: any, idx: number) => {
+                console.log('idx', idx);
+                return (
+                    <Column
+                        key={idx}
+                        handleColumnItemSelect={(item) => {
+                            setSelectedColumnItem(item);
+                            setEditColumnItemModalVisible(true);
+                        }}
+                        boardId={currentBoardId as number}
+                        column={column}
+                    />
+                );
+            })}
 
             {/* modal of the details of the clicked columnItem */}
             {selectedColumnItem && (

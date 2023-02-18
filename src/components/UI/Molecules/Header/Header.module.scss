@@ -1,13 +1,15 @@
 @import '../../../../styles/colors';
 
 .header {
-    display: flex;
-    min-height: 56px;
-    background-color: $sidebarBackground;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 56px;
+    background-color: $sidebarBackground;
 }
 
 .header__actions {

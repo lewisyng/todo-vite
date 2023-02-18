@@ -10,10 +10,15 @@
     font-family: 'Roboto', sans-serif;
 }
 
+a {
+    text-decoration: none;
+}
+
 :root {
-    --draft-main: #0285B3;
-    --sidebar-background: #1E1E1E;
-    --color-dark-background: #1E1E1E;
+    --white: #fff;
+    --draft-main: #0285b3;
+    --sidebar-background: #1e1e1e;
+    --color-dark-background: #1e1e1e;
     --column-dark-background: #6e6e6f;
     --columnItem-dark-background: #adadb0;
 
@@ -147,7 +152,7 @@ body {
         display: none;
         // Hide scrollbar for IE, Edge and Firefox
 
-        -ms-overflow-style: none; // IE and Edge 
+        -ms-overflow-style: none; // IE and Edge
         scrollbar-width: none; // Firefox
     }
 }
@@ -177,8 +182,8 @@ input {
 }
 
 .react-datepicker__close-icon::after {
-    content: "clear" !important;
+    content: 'clear' !important;
     padding: 4px 8px !important;
     border-radius: 4px !important;
-    background-color: #1565C0 !important;
+    background-color: #1565c0 !important;
 }

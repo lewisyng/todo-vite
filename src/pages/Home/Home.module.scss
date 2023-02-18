@@ -1,0 +1,13 @@
+.home__wrapper {
+    background-color: var(--blue-300);
+    height: 100vh;
+}
+
+.home {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    gap: 1.5rem;
+}
