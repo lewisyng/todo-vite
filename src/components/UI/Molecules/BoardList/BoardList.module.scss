@@ -2,4 +2,14 @@
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1rem;
+
+    &--flex {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        & > * {
+            flex: 0 0 33.33333%;
+        }
+    }
 }
