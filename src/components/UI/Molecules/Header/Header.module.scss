@@ -10,6 +10,7 @@
     align-items: center;
     min-height: 56px;
     background-color: $sidebarBackground;
+    padding: 0.4rem 1rem;
 }
 
 .header__actions {
@@ -18,7 +19,6 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 0.4rem 1rem;
 }
 
 .logo {

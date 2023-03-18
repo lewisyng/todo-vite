@@ -8,7 +8,7 @@ export const ManageTags = () => {
 
     return (
         <>
-            <Button onClick={openModal} form="outlined">
+            <Button onClick={openModal}>
                 <LocalOfferIcon />
 
                 <span>TAGS</span>

@@ -19,6 +19,7 @@ export const CreateNewBoardModal = ({
     const createBoard = (e: FormEvent) => {
         e.preventDefault();
 
+        // @ts-ignore
         database.boards.add({
             title: name,
         });
@@ -45,12 +46,7 @@ export const CreateNewBoardModal = ({
         >
             <>
                 <form className={styles.newBoard__form} onSubmit={createBoard}>
-                    <Input
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.currentTarget.value)}
-                        autoFocus
-                    />
+                    <Input type="text" value={name} onChange={(e) => setName(e.currentTarget.value)} autoFocus />
 
                     <div className={styles['create-board-modal__actions']}>
                         <Button type="submit" variant="secondary">
@@ -71,14 +67,12 @@ export const CreateNewBoardModal = ({
                             key={toast.id}
                             className={styles['toast-container']}
                             style={{
-                                position: "absolute",
+                                position: 'absolute',
                                 top: 0,
                                 left: 0,
                             }}
                         >
-                            <div className={styles['toast-content']}>
-                                {/* {toast.message} */}
-                            </div>
+                            <div className={styles['toast-content']}>{/* {toast.message} */}</div>
                         </div>
                     );
                 })}

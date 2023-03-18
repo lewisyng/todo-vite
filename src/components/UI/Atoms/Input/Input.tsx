@@ -3,7 +3,7 @@ import cs from 'classnames';
 import { forwardRef } from 'react';
 import { Label } from '../Label/Label';
 
-type InputProps = {
+interface InputProps{
     type?: string;
     label?: string;
     value: string;
@@ -14,7 +14,7 @@ type InputProps = {
     onBlur?: () => void;
     autoFocus?: boolean;
     className?: string;
-};
+}
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
     (

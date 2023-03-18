@@ -20,7 +20,7 @@ export const Typography = ({
                 styles[`typography--${size}`],
                 styles[`typography--${weight}`],
                 uppercase && styles.typography__uppercase,
-                className
+                className,
             )}
             style={style}
         >

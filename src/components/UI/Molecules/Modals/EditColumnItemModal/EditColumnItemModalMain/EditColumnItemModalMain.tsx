@@ -9,16 +9,11 @@ import { EditColumnItemDescription } from '@Molecules/EditColumnItemDescription/
 import EditColumnItemChecklists from '@Molecules/EditColumnItemChecklists/EditColumnItemChecklists';
 import { Title, DateRange, ShortText, CheckBox } from '@mui/icons-material';
 
-export const EditColumnItemModalMain = ({
-    columnItem,
-}: {
-    columnItem: Item;
-}) => {
+export const EditColumnItemModalMain = ({ columnItem }: { columnItem: Item }) => {
     const tags = useLiveQuery(() => database.tags.toArray());
 
     return (
         <div className={styles.editColumnItemModalContent__main}>
-            {/* TITLE */}
             <EditColumnItemSection icon={<Title />}>
                 <EditColumnItemTitle columnItem={columnItem} />
             </EditColumnItemSection>
@@ -55,14 +50,14 @@ export const EditColumnItemModalMain = ({
                 <EditColumnItemDate columnItem={columnItem} />
             </EditColumnItemSection>
 
-            {/* CHECKLISTS */}
-            <EditColumnItemSection icon={<CheckBox />}>
-                <EditColumnItemChecklists columnItem={columnItem} />
-            </EditColumnItemSection>
-
             {/* DESCRIPTION */}
             <EditColumnItemSection icon={<ShortText />}>
                 <EditColumnItemDescription columnItem={columnItem} />
+            </EditColumnItemSection>
+
+            {/* CHECKLISTS */}
+            <EditColumnItemSection icon={<CheckBox />}>
+                <EditColumnItemChecklists columnItem={columnItem} />
             </EditColumnItemSection>
         </div>
     );

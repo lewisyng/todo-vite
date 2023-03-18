@@ -3,8 +3,7 @@ import { Item } from '@src/models';
 import { Label } from '@Atoms/Label/Label';
 import { useCallback } from 'react';
 import { database } from '@src/database';
-import ReactDatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css'
+import { DatePicker } from '@Atoms/DatePicker/DatePicker';
 
 export const EditColumnItemDate = ({ columnItem }: { columnItem: Item }) => {
     const { startDate, endDate } = columnItem;
@@ -15,7 +14,7 @@ export const EditColumnItemDate = ({ columnItem }: { columnItem: Item }) => {
                 startDate: date,
             });
         },
-        [columnItem.id]
+        [columnItem.id],
     );
 
     const persistEndDate = useCallback(
@@ -24,37 +23,26 @@ export const EditColumnItemDate = ({ columnItem }: { columnItem: Item }) => {
                 endDate: date,
             });
         },
-        [columnItem.id]
+        [columnItem.id],
     );
 
     return (
         <div className={styles.editColumnItem__dates}>
             <div className={styles.editColumnItem__date}>
-                <Label
-                    className={styles.editColumnItemDate__label}
-                    title="Start"
-                    bold
-                />
+                <Label className={styles.editColumnItemDate__label} title="Start" bold />
 
-                <ReactDatePicker
+                <DatePicker
                     selected={startDate}
                     onChange={persistStartDate}
                     isClearable
+                    placeholderText="Select start"
                 />
             </div>
 
             <div className={styles.editColumnItem__date}>
-                <Label
-                    className={styles.editColumnItemDate__label}
-                    title="End"
-                    bold
-                />
+                <Label className={styles.editColumnItemDate__label} title="End" bold />
 
-                <ReactDatePicker
-                    selected={endDate}
-                    onChange={persistEndDate}
-                    isClearable
-                />
+                <DatePicker selected={startDate} onChange={persistStartDate} isClearable placeholderText="Select end" />
             </div>
         </div>
     );

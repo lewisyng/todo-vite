@@ -173,14 +173,6 @@ textarea {
     resize: none;
 }
 
-input {
-    background: transparent;
-    border: none;
-    outline: none;
-    font-weight: bold;
-    font-size: 20px;
-}
-
 .react-datepicker__close-icon::after {
     content: 'clear' !important;
     padding: 4px 8px !important;

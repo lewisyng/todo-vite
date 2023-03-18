@@ -1,8 +1,6 @@
 .editColumnItem__title {
     display: flex;
     align-items: center;
-    font-weight: bold;
-    font-size: 20px;
     border-radius: 4px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -11,21 +9,8 @@
     max-width: 100%;
     padding: 0.25rem 0.5rem;
     transition: all 350ms ease;
-    outline-width: 2px !important;
-    outline-color: rgba(0, 0, 0, 0) !important;
-    outline-style: solid !important;
 }
 
 .editColumnItem__title input {
     width: 100%;
-}
-
-.editColumnItemTitle__focused {
-    box-shadow: 0 0 0 2px #0079bf;
-    background: white;
-}
-
-.editColumnItem__title:hover,
-.editColumnItem__title:focus {
-    outline-color: rgba(0, 0, 0, 0.5) !important;
 }

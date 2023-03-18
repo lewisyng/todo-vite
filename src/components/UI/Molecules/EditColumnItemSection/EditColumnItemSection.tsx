@@ -1,6 +1,7 @@
 import styles from './EditColumnItemSection.module.css';
 import { Label } from '@Atoms/Label/Label';
 import IconWrapper from '@Atoms/IconWrapper/IconWrapper';
+import { ReactNode } from 'react';
 
 export const EditColumnItemSection = ({
     htmlFor,
@@ -9,21 +10,17 @@ export const EditColumnItemSection = ({
     children,
 }: {
     htmlFor?: string;
-    title?: string | React.ReactNode;
-    icon?: React.ReactNode;
-    children: React.ReactNode;
+    title?: ReactNode;
+    icon?: ReactNode;
+    children: ReactNode;
 }) => {
     return (
         <div className={styles.editColumnItemSection}>
-            <div className={styles.editColumnItemSection__icon}>
-                {icon && <IconWrapper icon={icon} />}
-            </div>
+            <div className={styles.editColumnItemSection__icon}>{/*{icon && <IconWrapper icon={icon} />}*/}</div>
 
             <div className={styles.editColumnItemSection__content}>
                 {title && (
-                    <div className={styles.editColumnItemSectionContent__label}>
-                        <Label htmlFor={htmlFor} title={title} />
-                    </div>
+                    <Label htmlFor={htmlFor} title={title} className={styles.editColumnItemSectionContent__label} />
                 )}
 
                 {children}

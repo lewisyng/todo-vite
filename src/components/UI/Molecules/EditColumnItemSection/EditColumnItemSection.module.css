@@ -1,24 +1,15 @@
 .editColumnItemSection {
     width: 100%;
     display: grid;
-    grid-template-columns: 50px 1fr;
-}
-
-.editColumnItemSection:not(:first-of-type) {
-    margin-top: 1rem;
+    grid-template-columns: 0px 1fr;
 }
 
 .editColumnItemSection__icon svg {
-    fill: var(--gray-900) !important;
-}
-
-.editColumnItemSection__content {
-    margin: 0 0 1rem 0;
+    fill: #000000BB !important;
 }
 
 .editColumnItemSection__content > label {
     font-size: 0.875rem;
-    /* color: var(--gray-900); */
 }
 
 .editColumnItemSectionContent__label {

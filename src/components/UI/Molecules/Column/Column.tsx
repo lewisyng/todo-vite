@@ -7,6 +7,7 @@ import { database } from '@src/database';
 import { useLiveQuery } from 'dexie-react-hooks';
 import ColumnHeader from '@Molecules/ColumnHeader/ColumnHeader';
 import { useAppSelector } from '@hooks/redux';
+import { ColumnItems } from '@Molecules/ColumnItems/ColumnItems';
 
 type Props = {
     boardId: number;
@@ -14,37 +15,18 @@ type Props = {
     handleColumnItemSelect: (item: any) => void;
 };
 
-const Column: FunctionComponent<Props> = ({
-    boardId,
-    column,
-    handleColumnItemSelect,
-}) => {
+const Column: FunctionComponent<Props> = ({ boardId, column, handleColumnItemSelect }) => {
     const { id: columnId } = column;
 
-    const colorScheme = useAppSelector(
-        (state) => state.persistedReducer.config.colorScheme
-    );
+    const colorScheme = useAppSelector((state) => state.persistedReducer.config.colorScheme);
 
-    const items = useLiveQuery(
-        () => database.items.where('columnId').equals(columnId!).toArray(),
-        [columnId],
-        []
-    );
+    const items = useLiveQuery(() => database.items.where('columnId').equals(columnId!).toArray(), [columnId], []);
 
     return (
-        <div
-            className={styles.column}
-            style={{ backgroundColor: `var(--${colorScheme}-200)` }}
-        >
+        <div className={styles.column} style={{ backgroundColor: `var(--${colorScheme}-200)` }}>
             <ColumnHeader column={column} />
 
-            {items?.map((columnItem: any) => (
-                <ColumnItem
-                    key={columnItem.id}
-                    columnItem={columnItem}
-                    handleColumnItemSelect={handleColumnItemSelect}
-                />
-            ))}
+            <ColumnItems items={items} handleColumnItemSelect={handleColumnItemSelect} />
 
             <CreateItem boardId={boardId} columnId={columnId!} />
         </div>

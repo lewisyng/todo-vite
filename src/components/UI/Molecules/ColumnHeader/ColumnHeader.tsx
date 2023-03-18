@@ -12,14 +12,11 @@ import Button from '@Atoms/Button/Button';
 
 export const ColumnHeader = ({ column }: { column: ColumnType }) => {
     const { id: columnId, title: columnTitle } = column;
-    const colorScheme = useAppSelector(
-        (state) => state.persistedReducer.config.colorScheme
-    );
+    const colorScheme = useAppSelector((state) => state.persistedReducer.config.colorScheme);
 
     const [editTitle, setEditTitle] = useState<boolean>(false);
     const [title, setTitle] = useState<string>(columnTitle);
-    const [deleteColumnModalVisible, setDeleteColumnModalVisible] =
-        useState<boolean>(false);
+    const [deleteColumnModalVisible, setDeleteColumnModalVisible] = useState<boolean>(false);
 
     const changeTitle = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -48,28 +45,22 @@ export const ColumnHeader = ({ column }: { column: ColumnType }) => {
                     <form onSubmit={changeTitle}>
                         <Input
                             type="text"
-                            label="Neuer Titel"
                             value={title.toUpperCase()}
-                            onChange={(e: React.FormEvent) =>
-                                setTitle((e.target as HTMLInputElement).value)
-                            }
+                            onChange={(e: React.FormEvent) => setTitle((e.target as HTMLInputElement).value)}
                             onBlur={() => setEditTitle(false)}
                             autoFocus
                         />
                     </form>
                 ) : (
-                    <Heading
-                        title={column.title}
-                        className={styles.columnHeader__title}
-                    >
-                        {column.title.toUpperCase()}
+                    <Heading title={column.title} className={styles.columnHeader__title}>
+                        {column.title}
                     </Heading>
                 )}
             </div>
 
-            <div className={styles["column-header__btns"]}>
+            <div className={styles['column-header__buttons']}>
                 <Button
-                    form="nude"
+                    icon
                     onClick={() => {
                         setEditTitle(true);
                     }}
@@ -78,10 +69,7 @@ export const ColumnHeader = ({ column }: { column: ColumnType }) => {
                     <EditIcon />
                 </Button>
 
-                <Button
-                    form="nude"
-                    onClick={() => setDeleteColumnModalVisible(true)}
-                >
+                <Button icon onClick={() => setDeleteColumnModalVisible(true)}>
                     <DeleteIcon />
                 </Button>
             </div>

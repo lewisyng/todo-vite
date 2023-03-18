@@ -1,26 +1,17 @@
-import { useState } from 'react';
-import styles from './CreateItem.module.css';
+import { FormEvent, useState } from 'react';
+import styles from './CreateItem.module.scss';
 import { database } from '@src/database';
 import Button from '@Atoms/Button/Button';
 import AddIcon from '@mui/icons-material/Add';
 import { useAppSelector } from '@hooks/redux';
 
-export const CreateItem = ({
-    columnId,
-    boardId,
-}: {
-    columnId: number;
-    boardId: number;
-}) => {
+export const CreateItem = ({ columnId, boardId }: { columnId: number; boardId: number }) => {
     const [value, setValue] = useState('');
-    const [addCardInputVisible, setAddCardInputVisible] =
-        useState<boolean>(false);
+    const [addCardInputVisible, setAddCardInputVisible] = useState<boolean>(false);
 
-    const colorScheme = useAppSelector(
-        (state) => state.persistedReducer.config.colorScheme
-    );
+    const colorScheme = useAppSelector((state) => state.persistedReducer.config.colorScheme);
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
 
         if (value) {
@@ -40,7 +31,7 @@ export const CreateItem = ({
     return (
         <div className={styles.createItem} data-color-scheme={colorScheme}>
             {addCardInputVisible ? (
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className={styles['create-item__form']}>
                     <input
                         value={value}
                         onChange={(e) => setValue(e.target.value)}
@@ -50,12 +41,10 @@ export const CreateItem = ({
                     />
                 </form>
             ) : (
-                <Button onClick={() => setAddCardInputVisible(true)}>
+                <Button onClick={() => setAddCardInputVisible(true)} className={styles['create-item__button']}>
                     <AddIcon />
 
-                    <span className={styles.button__text}>
-                        Create a new Card
-                    </span>
+                    <span className={styles['create-item__button-text']}>Create a new Card</span>
                 </Button>
             )}
         </div>

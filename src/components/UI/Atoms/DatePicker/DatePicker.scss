@@ -1,0 +1,56 @@
+.react-datepicker {
+    &__header {
+        background-color: black;
+
+        & * {
+            color: white;
+        }
+    }
+
+    &-wrapper {
+        & input {
+            font-size: 1rem;
+        }
+    }
+
+    &__day--selected,
+    &__day--keyboard-selected {
+        background-color: black;
+    }
+
+    &__triangle::after {
+        border-bottom-color: black !important;
+    }
+
+    &-popper {
+        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+    }
+
+    &__input-container {
+        & input {
+            background-color: white;
+            outline: 1px solid #d0d5dd;
+            border: none;
+            border-radius: 4px;
+            width: 100%;
+
+            &::placeholder {
+                font-size: 0.875rem;
+            }
+        }
+    }
+}
+
+.react-datepicker__close-icon {
+    &:hover::after {
+        background-color: black;
+        color: white;
+    }
+
+    &::after {
+        background-color: transparent;
+        color: black;
+        outline: black 1px solid;
+        transition: all 300ms ease;
+    }
+}
