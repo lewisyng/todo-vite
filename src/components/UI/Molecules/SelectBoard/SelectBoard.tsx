@@ -8,12 +8,7 @@ export const SelectBoard = () => {
 
     return (
         <div className={styles.selectBoard}>
-            <Button
-                onClick={openModal}
-                form="outlined"
-            >
-                Boards
-            </Button>
+            <Button onClick={openModal}>Boards</Button>
 
             <SelectBoardModal open={isModalOpen} handleClose={closeModal} />
         </div>

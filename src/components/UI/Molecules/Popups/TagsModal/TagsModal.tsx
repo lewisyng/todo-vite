@@ -5,6 +5,7 @@ import { TagType } from '@src/models';
 import BaseModal from '@Molecules/Modals/BaseModal';
 import Button from '@src/components/UI/Atoms/Button/Button';
 import cs from 'classnames';
+import { Tag } from '@Atoms/Tag/Tag';
 
 export const TagsModal = ({
     columnItemId,
@@ -15,13 +16,9 @@ export const TagsModal = ({
     open: boolean;
     handleClose: () => void;
 }) => {
-    const tags: TagType[] | undefined = useLiveQuery(() =>
-        database.tags.toArray()
-    );
+    const tags: TagType[] | undefined = useLiveQuery(() => database.tags.toArray());
 
-    const columnItem = useLiveQuery(() =>
-        database.items.where('id').equals(columnItemId).first()
-    );
+    const columnItem = useLiveQuery(() => database.items.where('id').equals(columnItemId).first());
 
     console.log('col', columnItem?.tags);
 
@@ -55,30 +52,19 @@ export const TagsModal = ({
     return (
         <BaseModal title="Tags" open={open} onClose={handleClose}>
             <div className={styles.tags}>
-                {tags?.map((tag) => {
-                    return (
-                        <div
-                            key={tag.id}
-                            className={cs(
-                                styles.tag,
-                                columnItem?.tags.includes(tag!.id as number) &&
-                                    styles['tag--active']
-                            )}
-                            onClick={() => toggleTag(tag.id!)}
-                        >
-                            <div
-                                className={styles.tag__color}
-                                style={{ background: tag.color }}
-                            ></div>
-
-                            <div className={styles.tag__title}>{tag.title}</div>
-                        </div>
-                    );
-                })}
+                {tags?.map((tag) => (
+                    <Tag
+                        onClick={() => toggleTag(tag.id!)}
+                        active={columnItem?.tags.includes(tag!.id as number)}
+                        color={tag.color}
+                        title={tag.title}
+                    />
+                ))}
 
                 <Button className={styles.tagsModal__btn} onClick={deselectAll} variant="primary">
                     Save
                 </Button>
+
                 <Button className={styles.tagsModal__btn} onClick={deselectAll} variant="secondary">
                     Deselect all
                 </Button>

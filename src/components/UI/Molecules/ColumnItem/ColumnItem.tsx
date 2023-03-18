@@ -5,19 +5,15 @@ import { Item } from '@src/models';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { database } from '@src/database';
 import { useAppSelector } from '@hooks/redux';
+import Typography from '@Atoms/Typography/Typography';
 
-type Props = {
+type ColumnItemProps = {
     columnItem: Item;
     handleColumnItemSelect: (item: any) => void;
 };
 
-const ColumnItem: FunctionComponent<Props> = ({
-    columnItem,
-    handleColumnItemSelect,
-}) => {
-    const colorScheme = useAppSelector(
-        (state) => state.persistedReducer.config.colorScheme
-    )
+const ColumnItem: FunctionComponent<ColumnItemProps> = ({ columnItem, handleColumnItemSelect }) => {
+    const colorScheme = useAppSelector((state) => state.persistedReducer.config.colorScheme);
 
     const item = useLiveQuery(() => {
         return database.items.where('id').equals(columnItem.id!).first();
@@ -53,10 +49,12 @@ const ColumnItem: FunctionComponent<Props> = ({
                         })}
                     </div>
                 )}
-                <Heading className={styles.columnItem__heading}>
+
+                <Heading className={styles.columnItem__heading} weight="bold">
                     {columnItem.title}
                 </Heading>
-                {/* <Content>{listItem.description}</Content> */}
+
+                <Typography size="text-sm">{columnItem.description}</Typography>
             </div>
         </div>
     );

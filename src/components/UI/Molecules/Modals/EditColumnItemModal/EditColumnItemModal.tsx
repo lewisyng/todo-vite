@@ -5,6 +5,7 @@ import EditColumnItemModalSide from './EditColumnItemModalSide/EditColumnItemMod
 import { Item } from '@src/models';
 import { database } from '@src/database';
 import { useLiveQuery } from 'dexie-react-hooks';
+import Button from '@Atoms/Button/Button';
 
 export const EditColumnItemModal = ({
     columnItem,
@@ -19,7 +20,7 @@ export const EditColumnItemModal = ({
         database.items
             .where('id')
             .equals(columnItem.id as number)
-            .first()
+            .first(),
     );
 
     return (
@@ -29,19 +30,23 @@ export const EditColumnItemModal = ({
             onClose={onClose}
             parentSelector={document.body}
             title="Edit Column Item"
+            footer={
+                <div>
+                    <Button variant="primary" onClick={onClose}>
+                        Save
+                    </Button>
+                </div>
+            }
         >
             <div className={styles.editColumnItemModal__content}>
-                <div className={styles["editColumnItemModal__content-main"]}>
-                    <EditColumnItemModalMain
-                        columnItem={liveColumnItem || columnItem}
-                    />
+                <div className={styles['editColumnItemModal__content-main']}>
+                    <EditColumnItemModalMain columnItem={liveColumnItem || columnItem} />
                 </div>
-                <div className={styles["editColumnItemModal__content-side"]}>
-                    <EditColumnItemModalSide columnItemId={columnItem.id!} />
-                </div>
+
+                {/*<div className={styles['editColumnItemModal__content-side']}>*/}
+                {/*    <EditColumnItemModalSide columnItemId={columnItem.id!} />*/}
+                {/*</div>*/}
             </div>
         </BaseModal>
     );
 };
-
-export default EditColumnItemModal;

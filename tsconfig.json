@@ -17,14 +17,14 @@
         "jsx": "react-jsx",
         "baseUrl": ".",
         "paths": {
-            "@src/*": ["./src/*"],
-            "@Atoms/*": ["./src/components/UI/Atoms/*"],
-            "@Molecules/*": ["./src/components/UI/Molecules/*"],
-            "@Organisms/*": ["./src/components/UI/Organisms/*"],
-            "@hooks/*": ["./src/lib/hooks/*"],
-            "@helpers/*": ["./src/lib/helpers/*"]
+            "@src/*": ["src/*"],
+            "@Atoms/*": ["src/components/UI/Atoms/*"],
+            "@Molecules/*": ["src/components/UI/Molecules/*"],
+            "@Organisms/*": ["src/components/UI/Organisms/*"],
+            "@hooks/*": ["src/lib/hooks/*"],
+            "@helpers/*": ["src/lib/helpers/*"]
         }
     },
-    "include": ["src", "**/*.ts", "**/*.tsx", "src/database.ts"],
+    "include": ["src/**/*", "**/*.ts", "**/*.tsx", "src/database.ts"],
     "references": [{ "path": "./tsconfig.node.json" }]
 }
